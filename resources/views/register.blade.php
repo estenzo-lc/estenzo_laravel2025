@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Register</title>
+<<<<<<< HEAD
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
@@ -67,5 +68,27 @@
         </div>
     </div>
 </div>
+=======
+</head>
+<body>
+    <h2>Register</h2>
+    <form method="POST" action="{{ route('register.post') }}">
+        @csrf
+        <label>First Name: <input type="text" name="first_name"></label><br>
+        <label>Last Name: <input type="text" name="last_name"></label><br>
+        <label>Sex: 
+            <select name="sex">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </label><br>
+        <label>Birthday: <input type="date" name="birthday"></label><br>
+        <label>Username: <input type="text" name="username"></label><br>
+        <label>Email: <input type="email" name="email"></label><br>
+        <label>Password: <input type="password" name="password"></label><br>
+        <label><input type="checkbox" name="agree"> I agree with the Privacy Policy and Terms</label><br>
+        <button type="submit">Register</button>
+    </form>
+>>>>>>> 2ef51e9fe0291416c8b1dbb50e1385acf6720a69
 </body>
 </html>

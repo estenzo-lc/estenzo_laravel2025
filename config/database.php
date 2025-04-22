@@ -47,7 +47,11 @@ return [
             'url' => env('DB_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
+<<<<<<< HEAD
             'database' => env('DB_DATABASE', 'laravel'),
+=======
+            'database' => env('DB_DATABASE', 'my_new_laravel_db'),
+>>>>>>> 2ef51e9fe0291416c8b1dbb50e1385acf6720a69
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
