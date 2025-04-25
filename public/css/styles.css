@@ -1,0 +1,111 @@
+:root {
+    --primary-color: #c0d7ff;     /* Soft Blue */
+    --secondary-color: #c8b3ff;   /* Light Purple */
+    --accent-color: #c3f9ff;       /* Sky Blue */
+    --light-color: #f7d2ff;        /* Light Pink */
+    --dark-color: #bec1ff;         /* Muted Indigo */
+    --text-color: #4a4a4a;         /* Soft Dark Text */
+  }
+  
+  /* --- GLOBAL --- */
+  body {
+    background-color: var(--light-color);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* --- BUTTONS --- */
+  .btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+    color: #ffffff;
+    transition: 0.3s;
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+  }
+  
+  .btn-accent {
+    background-color: var(--accent-color);
+    border: none;
+    color: #4a4a4a;
+  }
+  
+  .btn-accent:hover {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+  }
+  
+  /* --- CARDS --- */
+  .card {
+    background-color: var(--accent-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 12px;
+    box-shadow: 0px 6px 12px rgba(0,0,0,0.08);
+  }
+  
+  .card-title {
+    color: var(--dark-color);
+  }
+  
+  /* --- NAVBAR --- */
+  .navbar {
+    background-color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
+  }
+  
+  .navbar-brand, .nav-link {
+    color: #fff !important;
+    font-weight: 600;
+  }
+  
+  .nav-link:hover {
+    color: var(--accent-color) !important;
+  }
+  
+  /* --- BADGES --- */
+  .badge-custom {
+    background-color: var(--secondary-color);
+    color: #fff;
+    font-size: 0.9rem;
+    padding: 0.5em 1em;
+    border-radius: 12px;
+  }
+  
+  /* --- TEXT COLORS --- */
+  .text-primary-custom {
+    color: var(--primary-color);
+  }
+  
+  .text-secondary-custom {
+    color: var(--secondary-color);
+  }
+  
+  .text-dark-custom {
+    color: var(--dark-color);
+  }
+  
+  /* --- CUSTOM BACKGROUNDS --- */
+  .bg-primary-custom {
+    background-color: var(--primary-color);
+  }
+  
+  .bg-secondary-custom {
+    background-color: var(--secondary-color);
+  }
+  
+  .bg-accent-custom {
+    background-color: var(--accent-color);
+  }
+  
+  /* --- BORDERS --- */
+  .border-primary-custom {
+    border: 2px solid var(--primary-color) !important;
+  }
+  
+  .border-secondary-custom {
+    border: 2px solid var(--secondary-color) !important;
+  }
+  

@@ -1,34 +1,34 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\User;
+use App\Models\Usersinfo;
+use App\Http\Requests\UpdateProfileRequest;
 
 class ProfileController extends Controller
 {
-    // Show the edit profile form
     public function edit()
     {
-        return view('profile.edit');
+        return view('edit-profile');
     }
 
-    // Handle profile update
-    public function update(Request $request)
+    public function update(UpdateProfileRequest $request)
     {
-        $validated = $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users,username,' . Auth::id(),
-        ]);
+        $user = Usersinfo::find(session('user')->id);
 
-        $user = Auth::user();
-        $user->update([
-            'first_name' => $validated['first_name'],
-            'last_name' => $validated['last_name'],
-            'username' => $validated['username'],
-        ]);
-
-        return redirect()->route('dashboard')->with('success', 'Profile updated successfully!');
+        if ($user) {
+            $user->first_name = $request->first_name;
+            $user->last_name = $request->last_name;
+            $user->username = $request->username;
+            $user->save();
+    
+            session(['user' => $user]);
+    
+            return back()->with('success', 'Profile updated successfully!');
+        }
+    
+        return back()->withErrors(['user' => 'User not found.']);
     }
 }
+

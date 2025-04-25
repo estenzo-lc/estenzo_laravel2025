@@ -1,0 +1,25 @@
+body {
+    background-color: #F2EFE7; /* Light background */
+}
+
+.card {
+    margin-top: 50px; /* Center the registration card */
+    border: 1px solid #D0EBF2; /* Light teal border */
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.form-label {
+    color: #333333; /* Dark text for labels */
+}
+
+.btn-primary {
+    background-color: #48A6A7; /* Button background color */
+    border-color: #48A6A7;
+}
+
+.btn-primary:hover {
+    background-color: #3D9394; /* Darker button hover color */
+}

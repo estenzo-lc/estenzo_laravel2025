@@ -1,239 +1,70 @@
 <?php
 
+use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UploadController;
 
-// Home route (redirect to login)
 Route::get('/', function () {
-    return redirect('/login');
+    return view('welcome');
 });
 
-// Dashboard route (after successful login)
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('auth')->name('dashboard');
 
-// Login form
+
 Route::get('/login', function () {
-    if (Auth::check()) {
-        return redirect()->route('dashboard');
-    }
-    return view('login');
+    return view('login'); 
 })->name('login');
 
-// Handle login authentication
-Route::post('/login', function (Request $request) {
-    // Validate login data
-    $credentials = $request->only('username', 'password');
-
-    // Check if username and password are correct
-    if (Auth::attempt(['username' => $credentials['username'], 'password' => $credentials['password']])) {
-        return redirect()->route('dashboard');
-    } else {
-        return back()->with('error', 'Invalid credentials');
-    }
-})->name('login.submit');
-
-// Registration form
-Route::get('/register', function () {
-    if (Auth::check()) {
-        return redirect()->route('dashboard');
-    }
-    return view('register');
-})->name('register');
-
-// Handle registration form data
-Route::post('/register', function (Request $request) {
-    // Validate registration data
-    $validated = $request->validate([
-        'first_name' => 'required|string|max:255',
-        'last_name' => 'required|string|max:255',
-        'username' => 'required|string|max:255|unique:users',
-        'email' => 'required|email|unique:users',
-        'password' => 'required|string|min:8|confirmed',
-    ]);
-
-    // Create the user in the database
-    $user = User::create([
-        'first_name' => $validated['first_name'],
-        'last_name' => $validated['last_name'],
-        'username' => $validated['username'],
-        'email' => $validated['email'],
-        'password' => bcrypt($validated['password']),
-    ]);
-
-    // Log the user in
-    Auth::login($user);
-
-    // Redirect to the dashboard
-    return redirect()->route('dashboard');
-})->name('register.submit');
-
-// Edit Profile route (show form to edit profile)
-Route::get('/profile/edit', function () {
-    return view('edit-profile'); // Ensure to create 'edit-profile.blade.php'
-})->middleware('auth')->name('profile.edit');
-
-// Handle the Edit Profile form data
-Route::post('/profile/edit', function (Request $request) {
-    // Validate the new name and username
-    $validated = $request->validate([
-        'first_name' => 'required|string|max:255',
-        'last_name' => 'required|string|max:255',
-        'username' => 'required|string|max:255|unique:users,username,' . Auth::id(), // Skip checking current user
-    ]);
-
-    // Update the user's profile information
-    $user = Auth::user();
-    $user->update([
-        'first_name' => $validated['first_name'],
-        'last_name' => $validated['last_name'],
-        'username' => $validated['username'],
-    ]);
-
-    return redirect()->route('profile.edit')->with('success', 'Profile updated successfully!');
-})->middleware('auth')->name('profile.update');
-
-// Edit Password route (show form to change password)
-Route::get('/password/edit', function () {
-    return view('edit-password'); // Ensure to create 'edit-password.blade.php'
-})->middleware('auth')->name('password.edit');
-
-// Handle the Edit Password form data
-Route::post('/password/edit', function (Request $request) {
-    // Validate old password, new password, and confirm password
-    $validated = $request->validate([
-        'old_password' => 'required|string',
-        'password' => 'required|string|min:8|confirmed', // New password validation
-    ]);
-
-    // Check if the old password matches
-    if (!Hash::check($validated['old_password'], Auth::user()->password)) {
-        return back()->with('error', 'Old password is incorrect');
-    }
-
-    // Update the password in the database
-    $user = Auth::user();
-    $user->update([
-        'password' => bcrypt($validated['password']),
-    ]);
-
-    return redirect()->route('dashboard')->with('success', 'Password updated successfully!');
-})->middleware('auth')->name('password.update');
-
-// Upload form (show the form to upload a file)
-Route::get('/upload', function () {
-    return view('upload');
-})->middleware('auth')->name('upload.form');
-
-// Handle file upload (submit the file)
-Route::post('/upload', function (Request $request) {
-    $request->validate([
-        'file' => 'required|file|max:10240', // 10MB max file size
-    ]);
-
-    // Handle the uploaded file
-    $file = $request->file('file');
-    $filename = $file->hashName();
-    $file->storeAs('uploads', $filename, 'public'); // Store in the 'uploads' folder in storage/app/public
-
-    // Optionally, store file information in the database (e.g., user ID, original filename, etc.)
-    // Your logic for storing in the database goes here
-
-    return back()->with('success', 'File uploaded successfully!');
-})->middleware('auth')->name('upload.submit');
-
-// Admin Routes to view user list
-Route::get('/admin/users', function (Request $request) {
-    // Ensure the user is an admin
-    if (Auth::user()->is_admin !== 1) {
-        return redirect()->route('dashboard');
-    }
-
-    // Query users with optional search filters
-    $query = User::query();
-
-    if ($request->filled('name')) {
-        $query->where('first_name', 'like', '%' . $request->name . '%')
-              ->orWhere('last_name', 'like', '%' . $request->name . '%');
-    }
-
-    if ($request->filled('email')) {
-        $query->where('email', 'like', '%' . $request->email . '%');
-    }
-
-    // Paginate the results
-    $users = $query->paginate(10);
-
-    return view('admin.users', compact('users'));
-})->middleware('auth')->name('admin.users');
+//login Controller
+Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 
-<?php
-
-use Illuminate\Support\Facades\Route;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-
-// Dashboard Route
-Route::get('/dashboard', function () {
+Route::get('/dashboard', function (){
     return view('dashboard');
 })->name('dashboard');
 
-// Login Routes
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
-
-Route::post('/login', function (\Illuminate\Http\Request $request) {
-    $username = 'testuser';
-    $password = 'secret123';
-
-    if ($request->username === $username && $request->password === $password) {
-        return redirect()->route('dashboard');
-    }
-
-    return redirect()->back()->withErrors(['Invalid credentials.']);
-})->name('login.post');
-
-// Registration Routes
 Route::get('/register', function () {
-    return view('register');
+    return view('registration');
 })->name('register');
 
-Route::post('/register', function (\Illuminate\Http\Request $request) {
-    // Validate the form data
-    $validated = $request->validate([
-        'first_name' => 'required|string|max:255',
-        'last_name' => 'required|string|max:255',
-        'sex' => 'required|in:Male,Female',
-        'birthday' => 'required|date',
-        'password' => 'required|confirmed|min:8', // password confirmation rule
-        'username' => 'required|string|max:255|unique:users,username',
-        'email' => 'required|email|unique:users,email',
-        'agree' => 'accepted'
-    ]);
+//REGISTRATION CONTROLLER --  TODO: MOVE TO A CONTROLLER FOR A BETTER CODE AYAW KALIMTA.
 
-    // Create the new user (for now we won't actually save to DB, just show in the result view)
-    $user = User::create([
-        'first_name' => $request->first_name,
-        'last_name' => $request->last_name,
-        'sex' => $request->sex,
-        'birthday' => $request->birthday,
-        'email' => $request->email,
-        'password' => Hash::make($request->password),
-        'username' => $request->username
-    ]);
+Route::post('/register', [RegistrationController:: class, 'save'])->name('register.save');
 
-    // Optionally, log the user in immediately after registration (if you want)
-    auth()->login($user);
+// Route::post('/register', function (Request $request) {
+//     // not including password
+//     $data = $request->except('password');
 
-    // Redirect to a registration result page or dashboard
-    return view('registration_result', [
-        'user' => $user,
-        'message' => 'Registration successful!'
-    ]);
-})->name('register.post');
+//     return view('registration-success', ['data' => $data]);
+// });
+
+
+//Controller for editing name and username
+Route::get('/edit-profile', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::post('/edit-profile', [ProfileController::class, 'update'])->name('profile.update');
+
+
+//Controller for changeing password
+
+Route::get('/edit-password', [PasswordController::class, 'edit'])->name('password.edit');
+Route::post('/edit-password', [PasswordController::class, 'update'])->name('password.update');
+
+//Controller route for display user
+Route::get('/users', [UserController::class, 'index'])->name('user.list');
+
+Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+
+
+//Controller for upload view and uploading
+Route::middleware([])->group(function () {
+    Route::get('/upload', [UploadController::class, 'create'])->name('upload.create');
+    Route::post('/upload', [UploadController::class, 'store'])->name('upload.store');
+    Route::get('/my-uploads', [UploadController::class, 'index'])->name('upload.index');
+    Route::get('/download/{upload}', [UploadController::class, 'download'])->name('upload.download');
+    Route::delete('/upload/{upload}', [UploadController::class, 'destroy'])->name('upload.destroy');
+});
+

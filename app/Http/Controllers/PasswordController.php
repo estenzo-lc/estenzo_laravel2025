@@ -4,34 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Usersinfo;
+use App\Http\Requests\UpdatePasswordRequest;
 
 class PasswordController extends Controller
 {
-    // Show the password change form
+    //
+
     public function edit()
     {
-        return view('password.change');
+        return view('edit-password');
     }
 
-    // Handle the password change request
-    public function update(Request $request)
+    public function update(UpdatePasswordRequest $request)
     {
-        $validated = $request->validate([
-            'old_password' => 'required|string',
-            'password' => 'required|string|min:8|confirmed',
-        ]);
-
-        // Check if the old password matches
-        if (!Hash::check($validated['old_password'], Auth::user()->password)) {
-            return back()->with('error', 'Old password is incorrect.');
+        $user = Usersinfo::find(session('user')->id);
+    
+        if (!$user || !Hash::check($request->old_password, $user->password)) {
+            return back()->withErrors(['old_password' => 'Old password is incorrect.']);
         }
-
-        // Update the password
-        Auth::user()->update([
-            'password' => bcrypt($validated['password']),
-        ]);
-
+    
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+    
         return back()->with('success', 'Password updated successfully!');
     }
 }

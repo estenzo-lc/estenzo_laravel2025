@@ -1,26 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Registration Info</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Registration Success</title>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 </head>
-<body class="bg-light">
-<div class="container mt-5">
-    <div class="card shadow-sm mx-auto" style="max-width: 600px;">
-        <div class="card-body">
-            <h3 class="text-center mb-4">Registration Summary</h3>
-            <ul class="list-group">
-                @foreach($data as $key => $value)
-                    <li class="list-group-item">
-                        <strong>{{ ucfirst(str_replace('_', ' ', $key)) }}:</strong> {{ $value }}
-                    </li>
-                @endforeach
-            </ul>
-            <div class="text-center mt-4">
-                <a href="{{ route('login') }}" class="btn btn-primary">Back to Login</a>
-            </div>
-        </div>
+<body>
+    <div class="container mt-5">
+        <h2>Registration Successful</h2>
+        <ul class="list-group">
+            <li class="list-group-item"><strong>First Name:</strong> {{ $data['firstname'] ?? '' }}</li>
+            <li class="list-group-item"><strong>Middle Name:</strong> {{ $data['middlename'] ?? '' }}</li>
+            <li class="list-group-item"><strong>Last Name:</strong> {{ $data['lastname'] ?? '' }}</li>
+            <li class="list-group-item"><strong>Birthday:</strong> {{ $data['bod'] ?? '' }}</li>
+            <li class="list-group-item"><strong>Sex:</strong> {{ $data['sex'] ?? '' }}</li>
+            <li class="list-group-item"><strong>Email:</strong> {{ $data['email'] ?? '' }}</li>
+            <li class="list-group-item"><strong>Username:</strong> {{ $data['username'] ?? '' }}</li>
+            <li class="list-group-item"><strong>Accepted Terms:</strong> {{ isset($data['terms']) ? 'Yes' : 'No' }}</li>
+        </ul>
+        <a href="login" class="btn btn-primary"> Go back</a>
     </div>
-</div>
 </body>
 </html>
