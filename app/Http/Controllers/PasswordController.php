@@ -18,7 +18,8 @@ class PasswordController extends Controller
 
     public function update(UpdatePasswordRequest $request)
     {
-        $user = Usersinfo::find(session('user')->id);
+        $userId = session('user');  // This is just the user ID (int or string)
+        $user = Usersinfo::find($userId);
     
         if (!$user || !Hash::check($request->old_password, $user->password)) {
             return back()->withErrors(['old_password' => 'Old password is incorrect.']);

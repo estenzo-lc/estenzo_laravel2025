@@ -2,40 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
+use App\Models\Usersinfo;
 class AuthController extends Controller
 {
-    public function showLoginForm()
+    //
+
+    public function login(LoginRequest $request)
     {
-        return view('login');
-    }
+        $user = Usersinfo::where('username', $request->username)->first();
 
-    public function login(Request $request)
-    {
-        $username = $request->input('username');
-        $password = $request->input('password');
-
-        // Dummy login credentials
-        $correctUsername = 'admin';
-        $correctPassword = 'password123';
-
-        if ($username === $correctUsername && $password === $correctPassword) {
-            session(['logged_in' => true]);
-            return redirect('/dashboard');
-        } else {
-            return back()->withErrors(['Invalid credentials.']);
+        if ($user) {
+            if (Hash::check($request->password, $user->password)) {
+                session(['user' => $user->id]);
+                return redirect()->route('dashboard');
+            } else {
+                return back()->withErrors(['password' => 'Incorrect password.'])->withInput();
+            }
         }
+
+        return back()->withErrors(['username' => 'Username not found.'])->withInput();
     }
 
-    public function showRegistrationForm()
-    {
-        return view('register');
-    }
+    public function logout(Request $request)
+{
+    $request->session()->forget('user');              // Remove the user session
+    $request->session()->invalidate();                // Invalidate the session
+    $request->session()->regenerateToken();           // Regenerate CSRF token for security
 
-    public function register(Request $request)
-    {
-        $data = $request->except('password');
-        return view('registration-data', compact('data'));
-    }
+    return redirect()->route('login')->with('status', 'You have been logged out.');
+}
+
 }

@@ -22,9 +22,9 @@ class RegisterUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'firstname' => 'required|string|max:50|regex:/^[a-zA-Z\s\'\-]+$/',
-            'lastname' => 'required|string|max:50|regex:/^[a-zA-Z\s\'\-]+$/',
-            'bod' => 'required|date',
+            'first_name' => 'required|string|max:50|regex:/^[a-zA-Z\s\'\-]+$/',
+            'last_name' => 'required|string|max:50|regex:/^[a-zA-Z\s\'\-]+$/',
+            'birthday' => 'required|date',
             'sex' => 'required|in:Male,Female',
             'email' => 'required|email|unique:usersinfo,email',
             'username' => 'required|string|unique:usersinfo,username',

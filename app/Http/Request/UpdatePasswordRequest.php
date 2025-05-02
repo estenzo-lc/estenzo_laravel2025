@@ -4,11 +4,11 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdatePassword extends FormRequest
+class UpdatePasswordRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true; // Authorizes all users to make this request
+        return true;
     }
 
     public function rules(): array
@@ -24,7 +24,7 @@ class UpdatePassword extends FormRequest
     {
         return [
             'confirm_password.same' => 'New passwords do not match.',
-            'new_password.min' => 'New password must be at least 8 characters.',
         ];
     }
 }
+// This class handles the validation of the password update.

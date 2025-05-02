@@ -13,10 +13,11 @@ class UpdateProfileRequest extends FormRequest
 
     public function rules(): array
     {
+        $userId = session('user');
         return [
             'first_name' => 'required|string|max:50|regex:/^[a-zA-Z\s\'\-]+$/',
             'last_name' => 'required|string|max:50|regex:/^[a-zA-Z\s\'\-]+$/',
-            'username' => 'required|string|max:100|unique:usersinfo,username,' . session('user')->id . ',id',
+            'username' => 'required|string|max:100|unique:usersinfo,username,' . $userId . ',id',
         ];
     }
 

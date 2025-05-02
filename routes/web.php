@@ -21,7 +21,8 @@ Route::get('/login', function () {
 
 //login Controller
 Route::post('/login', [AuthController::class, 'login'])->name('login');
-
+//logout Controller
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout'); // or Route::post()
 
 Route::get('/dashboard', function (){
     return view('dashboard');
@@ -31,16 +32,10 @@ Route::get('/register', function () {
     return view('registration');
 })->name('register');
 
-//REGISTRATION CONTROLLER --  TODO: MOVE TO A CONTROLLER FOR A BETTER CODE AYAW KALIMTA.
+
 
 Route::post('/register', [RegistrationController:: class, 'save'])->name('register.save');
 
-// Route::post('/register', function (Request $request) {
-//     // not including password
-//     $data = $request->except('password');
-
-//     return view('registration-success', ['data' => $data]);
-// });
 
 
 //Controller for editing name and username
@@ -48,7 +43,7 @@ Route::get('/edit-profile', [ProfileController::class, 'edit'])->name('profile.e
 Route::post('/edit-profile', [ProfileController::class, 'update'])->name('profile.update');
 
 
-//Controller for changeing password
+//Controller for changing password
 
 Route::get('/edit-password', [PasswordController::class, 'edit'])->name('password.edit');
 Route::post('/edit-password', [PasswordController::class, 'update'])->name('password.update');
@@ -67,4 +62,3 @@ Route::middleware([])->group(function () {
     Route::get('/download/{upload}', [UploadController::class, 'download'])->name('upload.download');
     Route::delete('/upload/{upload}', [UploadController::class, 'destroy'])->name('upload.destroy');
 });
-

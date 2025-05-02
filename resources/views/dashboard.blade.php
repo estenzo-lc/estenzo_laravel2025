@@ -1,35 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fffcbd; /* soft yellow */
+    }
+
+    .nav-bar {
+      background: #ffb98a; /* soft orange */
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-bar a {
+      color: white;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .dashboard-container {
+      margin: 50px auto;
+      width: 90%;
+      max-width: 1200px;
+    }
+
+    .dashboard-title {
+      text-align: center;
+      color: #ff98a; /* reddish accent */
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+
+    .card-box {
+      background: #ffd2d2; /* soft pink */
+      border-radius: 15px;
+      padding: 25px;
+      color: #4a3b69;
+      transition: transform 0.2s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .card-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-box h4 {
+      font-weight: bold;
+    }
+
+    .footer {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #ffdac7;
+    }
+  </style>
 </head>
-<body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Dashboard</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<body>
 
-    <div class="container mt-5">
-        <div class="text-center">
-            <h2 class="mb-4">🎉 Welcome to your Dashboard!</h2>
-            <p class="lead">You have successfully logged in.</p>
+  @include('nav')
+
+  <div class="nav-bar">
+    <a href="#">Home</a>
+    <a href="#">Profile</a>
+    <a href="#">Settings</a>
+  </div>
+
+  <div class="dashboard-container">
+    <h2 class="dashboard-title">Welcome to Your Dashboard!</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card-box">
+          <h4>Card 1</h4>
+          <p>Sample content for card 1.</p>
         </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card-box" style="background: #ffecb0;"> <!-- pastel orange -->
+          <h4>Card 2</h4>
+          <p>Sample content for card 2.</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card-box" style="background: #ffdac7;"> <!-- peach pink -->
+          <h4>Card 3</h4>
+          <p>Sample content for card 3.</p>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <div class="footer">© 2025 Your Dashboard</div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
