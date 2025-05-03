@@ -10,34 +10,43 @@
     <style>
     body {
         background-color: #fffcbf; /* Pale yellow from palette */
+        font-family: Arial, sans-serif;
     }
 
     h2 {
-        color: #ffb98a; /* Soft orange */
+        color: #ffb98a;
         font-size: 2rem;
         text-align: center;
     }
 
     .card {
-        border: 1px solid #ffd2d2; /* Light pink */
+        border: 1px solid #ffd2d2;
         border-radius: 8px;
         background-color: #ffffff;
     }
 
     .card-body {
-        padding: 1.5rem;
+        padding: 2rem;
     }
 
     .form-label {
-        color: #ffdac7; /* Light peach */
+        color: #ffdac7;
     }
 
     .form-control {
         border: 1px solid #ffd2d2;
+        background-color: #fff5f5;
+        border-radius: 5px;
+    }
+
+    .form-control:focus {
+        border-color: #ffb98a;
+        outline: none;
+        box-shadow: 0 0 5px #ffb98a;
     }
 
     .btn-primary {
-        background-color: #ffd2d2; /* Light pink */
+        background-color: #ffd2d2;
         border-color: #ffd2d2;
         color: #333;
     }
@@ -69,6 +78,17 @@
         color: #333;
     }
 
+    .btn-success {
+        background: #ffecb0;
+        border-color: #ffecb0;
+        color: #333;
+    }
+
+    .btn-success:hover {
+        background: #fffcbf;
+        border-color: #fffcbf;
+    }
+
     .table-primary {
         background-color: #ffd2d2;
         color: #333;
@@ -79,8 +99,12 @@
         text-align: center;
     }
 
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #fff7e6; /* subtle peach striping */
+    }
+
     .alert-success {
-        background-color: #ffecb0; /* Pale yellow */
+        background-color: #ffecb0;
         color: #333;
     }
 
@@ -115,17 +139,6 @@
         color: #ffb98a;
         font-size: 2rem;
         text-align: center;
-    }
-
-    .btn-success {
-        background: #ffecb0;
-        border-color: #ffecb0;
-        color: #333;
-    }
-
-    .btn-success:hover {
-        background: #fffcbf;
-        border-color: #fffcbf;
     }
 </style>
 

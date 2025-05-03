@@ -8,11 +8,11 @@
 
     <style>
     body {
-        background-color: #fffcbf; /* Soft pastel yellow */
+        background-color: #fffcbf; /* Soft pastel yellow (unchanged) */
     }
 
     .navbar {
-        background-color: #ffd2d2; /* Soft pink */
+        background-color: #ffa6c9; /* Light pink */
     }
 
     .navbar-brand,
@@ -21,19 +21,19 @@
     }
 
     .nav-link:hover {
-        background-color: #ffb98a; /* Light orange */
+        background-color: #fca17d; /* Peach */
         color: white !important;
     }
 
     .logout-btn {
-        background-color: #ffd2d2; /* Soft pink */
-        border-color: #ffd2d2;
+        background-color: #f88379; /* Coral */
+        border-color: #f88379;
         color: white !important;
     }
 
     .logout-btn:hover {
-        background-color: #ffb98a;
-        border-color: #ffb98a;
+        background-color: #ff6f61; /* Salmon */
+        border-color: #ff6f61;
         color: white !important;
     }
 
@@ -42,7 +42,7 @@
     }
 
     h2 {
-        color: #ffb98a; /* Light orange */
+        color: #e65a5a; /* Rose Red */
         font-size: 2rem;
         text-align: center;
     }
@@ -53,7 +53,7 @@
     }
 
     .table thead {
-        background-color: #ffdac7; /* Light peach */
+        background-color: #ffa6c9; /* Light pink */
         color: #333;
     }
 
@@ -71,17 +71,18 @@
     }
 
     .btn-danger {
-        background-color: #ffb98a; /* Light orange */
-        border-color: #ffb98a;
+        background-color: #f88379; /* Coral */
+        border-color: #f88379;
         color: white;
     }
 
     .btn-danger:hover {
-        background-color: #ffecb0; /* Pale yellow */
+        background-color: #ffecb0; /* Pale yellow for contrast */
         border-color: #ffecb0;
         color: #333;
     }
 </style>
+
 
 </head>
 <body>

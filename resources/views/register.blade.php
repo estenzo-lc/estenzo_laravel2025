@@ -8,19 +8,22 @@
     <style>
     body {
         font-family: Arial, sans-serif;
-        background: #fffcbf; /* Soft yellow from palette */
+        background: #fffcbf; /* Soft yellow */
     }
+
     .nav-bar {
-        background: #ffdac7; /* Light peach from palette */
+        background: #ffdac7; /* Light peach */
         padding: 10px;
         text-align: center;
     }
+
     .nav-bar a {
         color: #ffffff;
         margin: 0 15px;
         text-decoration: none;
         font-weight: bold;
     }
+
     .register-container {
         background: #ffffff;
         padding: 30px;
@@ -29,46 +32,53 @@
         margin: 40px auto;
         width: 50%;
     }
+
     .register-title {
-        color: #ffb98a; /* Soft orange from palette */
+        color: #ffb98a; /* Light orange */
         font-size: 2rem;
         text-align: center;
     }
+
     .btn-primary {
-        background: #ffd2d2; /* Light pink from palette */
+        background: #ffd2d2; /* Soft pink */
         border-color: #ffd2d2;
         color: #333;
     }
+
     .btn-primary:hover {
         background: #ffb98a;
         border-color: #ffb98a;
     }
+
     .btn-success {
-        background: #ffecb0; /* Pale yellow from palette */
+        background: #ffecb0; /* Pale yellow */
         border-color: #ffecb0;
         color: #333;
     }
+
     .btn-success:hover {
         background: #fffcbf;
         border-color: #fffcbf;
     }
+
     #password-strength {
         font-size: 0.9rem;
     }
-    .strength-weak {
-        color: #dc3545;
-    }
-    .strength-medium {
-        color: #ffc107;
-    }
-    .strength-strong {
-        color: #28a745;
-    }
-</style>
 
+    .strength-weak {
+        color: #f88379; /* Coral red */
+    }
+
+    .strength-medium {
+        color: #fca17d; /* Pastel orange */
+    }
+
+    .strength-strong {
+        color: #63b995; /* Soft green */
+    }
+    </style>
 </head>
 <body>
-    
     @if (session('success'))
         <div class="alert alert-success text-center">
             {{ session('success') }}
@@ -77,7 +87,7 @@
 
     <div class="register-container">
         <h2 class="register-title">Register</h2>
-        <form method="POST" action="{{ route('register.save') }}">
+        <form method="POST" action="{{ route('register.submit') }}">
             @csrf
             <div class="form-group">
                 <label for="first_name">First Name</label>
@@ -124,6 +134,13 @@
                 <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Enter password" required>
                 <div id="password-strength" class="mt-1 fw-semibold"></div>
                 @error('password') <div class="invalid-feedback">{{ $message }}</div> @enderror
+            </div>
+
+            <!-- Password Confirmation Field -->
+            <div class="form-group">
+                <label for="password_confirmation">Confirm Password</label>
+                <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation" name="password_confirmation" placeholder="Re-enter your password" required>
+                @error('password_confirmation') <div class="invalid-feedback">{{ $message }}</div> @enderror
             </div>
 
             <div class="form-group form-check">

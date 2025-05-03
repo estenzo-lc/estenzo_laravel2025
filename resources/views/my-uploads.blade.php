@@ -9,12 +9,12 @@
 
     <style>
     body {
-        background-color: #fffcbd; /* Pale Yellow */
+        background-color: #ffa6c9; /* Light pink from palette */
         font-family: Arial, sans-serif;
     }
 
     .nav-bar {
-        background: #ffb98a; /* Soft Orange */
+        background: #fca17d; /* Soft orange from palette */
         padding: 10px;
         text-align: center;
     }
@@ -27,70 +27,71 @@
     }
 
     .filter-card {
-        background-color: #ffecb0; /* Light Peach */
-        border: 2px solid #ffb98a; /* Soft Orange */
+        background-color: #ffa6c9; /* Light pink */
+        border: 2px solid #fca17d; /* Soft orange */
         border-radius: 8px;
         padding: 1rem;
-        color: #4b0b4; /* Custom accent, remains if intentional */
+        color: #4b0b44; /* Dark plum – adjusted to a valid hex */
     }
 
     .profile-container {
         background: white;
         padding: 30px;
         border-radius: 10px;
-        box-shadow: 0 0 10px rgba(216, 151, 194, 0.1);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Neutral shadow */
         margin: 40px auto;
         width: 50%;
     }
 
     .profile-title {
-        color: #ffb98a; /* Soft Orange */
+        color: #fca17d; /* Soft orange */
         font-size: 2rem;
         text-align: center;
     }
 
     .btn-primary {
-        background: #ffd2d2; /* Light Pink */
-        border-color: #ffd2d2;
-        color: black;
+        background: #ff6f61; /* Coral red */
+        border-color: #ff6f61;
+        color: white;
     }
 
     .btn-primary:hover {
-        background: #ffdac7; /* Blush Pink */
-        border-color: #ffdac7;
+        background: #e65a5a; /* Deeper red */
+        border-color: #e65a5a;
     }
 
     .btn-success {
-        background: #ffb98a; /* Soft Orange */
-        border-color: #ffb98a;
+        background: #fca17d; /* Soft orange */
+        border-color: #fca17d;
         color: white;
     }
 
     .btn-success:hover {
-        background: #e5a4c2; /* Slightly deeper pink */
-        border-color: #e5a4c2;
+        background: #f88379; /* Salmon hover */
+        border-color: #f88379;
     }
 
     .btn-danger {
-        background: #d88aad; /* Medium pink */
-        border-color: #d88aad;
+        background: #f88379; /* Salmon pink */
+        border-color: #f88379;
         color: white;
     }
 
     .btn-danger:hover {
-        background: #c67397;
-        border-color: #c67397;
+        background: #ff6f61; /* Coral red */
+        border-color: #ff6f61;
     }
 
     .table-light th {
-        background-color: #ffecb0; /* Light Peach */
-        color: #4b0b4; /* Custom accent */
+        background-color: #ffa6c9; /* Light pink */
+        color: #4b0b44; /* Plum tone */
     }
 
     h2 {
-        color: #ffb98a; /* Soft Orange */
+        color: #fca17d; /* Soft orange */
     }
 </style>
+
 
 </head>
 

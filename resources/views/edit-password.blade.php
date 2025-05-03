@@ -8,11 +8,11 @@
     <style>
     body {
         font-family: Arial, sans-serif;
-        background: #fffcbd; /* soft pastel yellow */
+        background: #ffa6c9; /* light pink */
     }
 
     .nav-bar {
-        background: #ffb98a; /* pastel orange */
+        background: #fca17d; /* pastel orange from palette */
         padding: 10px;
         text-align: center;
     }
@@ -34,33 +34,34 @@
     }
 
     .profile-title {
-        color: #ff98a; /* reddish-pink accent */
+        color: #f88379; /* reddish-pink accent */
         font-size: 2rem;
         text-align: center;
     }
 
     .btn-primary {
-        background: #ffd2d2; /* soft pink */
-        border-color: #ffd2d2;
-        color: black;
+        background: #ff6f61; /* vibrant coral red */
+        border-color: #ff6f61;
+        color: white;
     }
 
     .btn-primary:hover {
-        background: #ffdac7; /* lighter pink on hover */
-        border-color: #ffdac7;
+        background: #e65a5a; /* deep red hover */
+        border-color: #e65a5a;
     }
 
     .btn-success {
-        background: #ffecb0; /* soft pastel orange */
-        border-color: #ffecb0;
-        color: black;
+        background: #fca17d; /* soft orange */
+        border-color: #fca17d;
+        color: white;
     }
 
     .btn-success:hover {
-        background: #fffcb8; /* very light yellow hover */
-        border-color: #fffcb8;
+        background: #f88379; /* salmon pink hover */
+        border-color: #f88379;
     }
 </style>
+
 
 </head>
 <body>

@@ -34,31 +34,31 @@
     }
 
     .register-title {
-        color: #ffb98a; /* Soft Orange */
+        color: #fca17d; /* Palette Soft Orange */
         font-size: 2rem;
         text-align: center;
     }
 
     .btn-primary {
-        background: #ffd2d2; /* Light Pink */
-        border-color: #ffd2d2;
+        background: #ffa6c9; /* Light Pink from palette */
+        border-color: #ffa6c9;
         color: black;
     }
 
     .btn-primary:hover {
-        background: #ffdac7; /* Blush Pink */
-        border-color: #ffdac7;
+        background: #f88379; /* Brighter pink for hover */
+        border-color: #f88379;
     }
 
     .btn-success {
-        background: #ffb98a; /* Soft Orange */
-        border-color: #ffb98a;
+        background: #fca17d; /* Soft Orange */
+        border-color: #fca17d;
         color: white;
     }
 
     .btn-success:hover {
-        background: #e5a4c2; /* Muted pink hover */
-        border-color: #e5a4c2;
+        background: #ff6f61; /* Coral red hover */
+        border-color: #ff6f61;
     }
 
     #password-strength {
@@ -66,17 +66,18 @@
     }
 
     .strength-weak {
-        color: #e66767; /* Soft red */
+        color: #ff6f61; /* Coral red from palette */
     }
 
     .strength-medium {
-        color: #f3b664; /* Pastel yellow-orange */
+        color: #fca17d; /* Soft Orange */
     }
 
     .strength-strong {
-        color: #63b995; /* Soft green */
+        color: #63b995; /* Soft green - OK for contrast even if not in original palette */
     }
 </style>
+
 
 </head>
 <body>

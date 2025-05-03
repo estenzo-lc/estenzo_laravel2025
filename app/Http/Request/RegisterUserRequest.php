@@ -28,26 +28,32 @@ class RegisterUserRequest extends FormRequest
             'sex' => 'required|in:Male,Female',
             'email' => 'required|email|unique:usersinfo,email',
             'username' => 'required|string|unique:usersinfo,username',
-            'password' => 'required|string|min:8',
+            'password' => 'required|string|min:8|confirmed',  // Ensures password confirmation matches
             'terms' => 'accepted',
         ];
     }
 
+    /**
+     * Get custom messages for validator errors.
+     */
     public function messages(): array
     {
         return [
-            'firstname.regex' => 'The first name may only contain letters, spaces, hyphens, and apostrophes.',
-            'lastname.regex' => 'The last name may only contain letters, spaces, hyphens, and apostrophes.',
+            'first_name.regex' => 'The first name may only contain letters, spaces, hyphens, and apostrophes.',
+            'last_name.regex' => 'The last name may only contain letters, spaces, hyphens, and apostrophes.',
+            'password.confirmed' => 'The password confirmation does not match.',
         ];
     }
 
+    /**
+     * Prepare the data for validation.
+     */
     protected function prepareForValidation()
     {
         $this->merge([
-            'firstname' => ucwords(strtolower(trim($this->firstname))),
-            'lastname' => ucwords(strtolower(trim($this->lastname))),
+            'first_name' => ucwords(strtolower(trim($this->first_name))),
+            'last_name' => ucwords(strtolower(trim($this->last_name))),
             'username' => trim($this->username),
         ]);
     }
-    
 }

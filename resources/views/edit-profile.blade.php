@@ -12,11 +12,11 @@
     <style>
     body {
         font-family: Arial, sans-serif;
-        background: #fffcbd; /* soft pastel yellow */
+        background: #ffa6c9; /* light pink background from palette */
     }
 
     .nav-bar {
-        background: #ffb98a; /* pastel orange */
+        background: #fca17d; /* orange from palette */
         padding: 10px;
         text-align: center;
     }
@@ -38,33 +38,34 @@
     }
 
     .profile-title {
-        color: #ffdac7; /* soft pink */
+        color: #f88379; /* salmon pink from palette */
         font-size: 2rem;
         text-align: center;
     }
 
     .btn-primary {
-        background: #ffd2d2; /* light pink */
-        border-color: #ffd2d2;
-        color: black;
+        background: #ff6f61; /* coral red */
+        border-color: #ff6f61;
+        color: white;
     }
 
     .btn-primary:hover {
-        background: #ffdac7; /* even lighter pink */
-        border-color: #ffdac7;
+        background: #e65a5a; /* deep red hover */
+        border-color: #e65a5a;
     }
 
     .btn-success {
-        background: #ffecb0; /* light peach */
-        border-color: #ffecb0;
-        color: black;
+        background: #fca17d; /* soft orange */
+        border-color: #fca17d;
+        color: white;
     }
 
     .btn-success:hover {
-        background: #fffcb8; /* lighter yellow on hover */
-        border-color: #fffcb8;
+        background: #f88379; /* hover salmon */
+        border-color: #f88379;
     }
 </style>
+
 
 </head>
 <body>

@@ -7,7 +7,7 @@
     <style>
     body {
         font-family: Arial, sans-serif;
-        background-color: #fffcbd; /* Pale Yellow */
+        background-color: #ffa6c9; /* Light pink */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -24,7 +24,7 @@
     }
 
     h2 {
-        color: #ffb98a; /* Soft Orange */
+        color: #fca17d; /* Orange */
         margin-bottom: 30px;
         text-align: center;
     }
@@ -33,7 +33,7 @@
         display: block;
         margin-bottom: 5px;
         font-weight: bold;
-        color: #ffdac7; /* Blush Pink */
+        color: #f88379; /* Salmon Pink */
     }
 
     input[type="text"],
@@ -43,12 +43,12 @@
         margin-bottom: 15px;
         border: 1px solid #ccc;
         border-radius: 5px;
-        background-color: #ffecb0; /* Light Peach */
+        background-color: #fff5f8; /* very soft tint derived from #ffa6c9 */
     }
 
     .btn-login {
-        background-color: #ffd2d2; /* Light Pink */
-        color: black;
+        background-color: #ff6f61; /* Coral Red */
+        color: white;
         border: none;
         padding: 12px;
         width: 100%;
@@ -58,14 +58,14 @@
     }
 
     .btn-login:hover {
-        background-color: #ffdac7; /* Blush Pink */
+        background-color: #e65a5a; /* Deep Red */
     }
 
     .btn-outline-secondary {
         margin-top: 10px;
         width: 100%;
-        color: #ffb98a;
-        border-color: #ffb98a;
+        color: #fca17d;
+        border: 2px solid #fca17d;
         border-radius: 5px;
         padding: 10px;
         font-weight: bold;
@@ -75,9 +75,9 @@
     }
 
     .btn-outline-secondary:hover {
-        background-color: #ffb98a;
+        background-color: #fca17d;
         color: white;
-        border-color: #ffb98a;
+        border-color: #fca17d;
     }
 
     .input-group {
@@ -96,7 +96,6 @@
         font-size: 0.875rem;
     }
 </style>
-
 </head>
 <body>
     @if (session('success'))

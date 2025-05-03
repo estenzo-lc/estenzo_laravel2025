@@ -39,6 +39,10 @@
         color: #333;
     }
 
+    .table tr:nth-child(even) {
+        background: #fff3e0; /* Subtle light peach for rows */
+    }
+
     .btn-danger {
         background: #ffb98a; /* Soft orange from palette */
         border-color: #ffb98a;
@@ -46,9 +50,9 @@
     }
 
     .btn-danger:hover {
-        background: #ffecb0; /* Pale yellow hover */
-        border-color: #ffecb0;
-        color: #333;
+        background: #fca17d; /* Slightly deeper pastel orange */
+        border-color: #fca17d;
+        color: white;
     }
 
     .btn-info {
@@ -62,6 +66,7 @@
         border-color: #fffcbf;
     }
 </style>
+
 
 </head>
 
