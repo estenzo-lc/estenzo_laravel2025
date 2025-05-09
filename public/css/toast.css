@@ -1,0 +1,49 @@
+.toast-container {
+    max-width: 400px;
+}
+
+.toast {
+    border-radius: 0.75rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: all 0.3s ease-in-out;
+}
+
+.toast .toast-body {
+    font-weight: 500;
+    padding: 0;
+}
+
+/* Updated with your pastel palette */
+.toast.bg-success {
+    background: linear-gradient(135deg, #f7d2ff, #c0d7ff);
+}
+
+.toast.bg-danger {
+    background: linear-gradient(135deg, #bec1ff, #c8b3ff);
+}
+
+/* Optional: Info and Warning if needed */
+.toast.bg-info {
+    background: linear-gradient(135deg, #c3f9ff, #c0d7ff);
+}
+
+.toast.bg-warning {
+    background: linear-gradient(135deg, #c8b3ff, #f7d2ff);
+}
+
+.btn-close {
+    filter: brightness(100%);
+}
+
+.toast ul {
+    margin: 0;
+    padding-left: 1rem;
+}
+
+.toast li {
+    list-style-type: disc;
+}

@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
+<style>
     body {
-        background-color: #fffcbf; /* Soft pastel yellow (unchanged) */
+        background-color: #F2EFE7;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     .navbar {
-        background-color: #ffa6c9; /* Light pink */
+        background-color: #48A6A7;
     }
 
     .navbar-brand,
@@ -20,118 +13,47 @@
         color: white !important;
     }
 
-    .nav-link:hover {
-        background-color: #fca17d; /* Peach */
-        color: white !important;
-    }
-
     .logout-btn {
-        background-color: #f88379; /* Coral */
-        border-color: #f88379;
+        background-color: #2973B2;
+        border-color: #2973B2;
         color: white !important;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
     }
 
     .logout-btn:hover {
-        background-color: #ff6f61; /* Salmon */
-        border-color: #ff6f61;
-        color: white !important;
+        background-color: #9ACBD0;
+        border-color: #9ACBD0;
     }
 
     .container {
-        margin-top: 20px;
+        margin-top: 40px;
     }
 
     h2 {
-        color: #e65a5a; /* Rose Red */
-        font-size: 2rem;
-        text-align: center;
+        color: #555;
+        margin-bottom: 20px;
     }
 
     .table {
+        background-color: #fff;
         border-radius: 8px;
-        background-color: #ffffff;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
-    .table thead {
-        background-color: #ffa6c9; /* Light pink */
+    .table th {
+        background-color: #d6f0f2;
+        color: #333;
+        border-bottom: 2px solid #b5dfe2;
+    }
+
+    .table td {
+        background-color: #ffffff;
         color: #333;
     }
 
-    .table tbody {
-        background-color: #ffffff;
-    }
-
-    .table th, .table td {
-        text-align: center;
-        padding: 1rem;
-    }
-
-    .btn {
-        border-radius: 8px;
-    }
-
-    .btn-danger {
-        background-color: #f88379; /* Coral */
-        border-color: #f88379;
-        color: white;
-    }
-
-    .btn-danger:hover {
-        background-color: #ffecb0; /* Pale yellow for contrast */
-        border-color: #ffecb0;
-        color: #333;
+    .table-bordered th,
+    .table-bordered td {
+        border: 1px solid #dee2e6;
     }
 </style>
-
-
-</head>
-<body>
-<div class="nav-bar">
-    <a href="{{ route('dashboard') }}">Dashboard</a>
-        <a href="{{ route('edit-password') }}">Edit Password</a>
-        <a href="{{ route('edit-profile') }}">Edit Profile</a>
-        <a href="{{ route('register') }}">Register</a>
-        <a href="{{ route('uploaded-files') }}">Uploaded Files</a>
-        <!-- <a href="{{route('users')}}">Users</a> -->
-         <!-- Only show the "Users" link to admins -->
-    @if(session('user') && session('user')->user_type === 'Admin')
-        <a href="{{ route('user.list') }}">Users</a>
-        
-    </div>
-    @include('nav')
-    
-    <div class="container mt-4">
-        <h2>User Management</h2>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Example user row (replace with dynamic data) -->
-                <tr>
-                    <td>1</td>
-                    <td>John Doe</td>
-                    <td>john@example.com</td>
-                    <td>Admin</td>
-                    <td>
-                        <form action="{{ route('user.destroy', 1) }}" method="POST" class="d-inline"
-                            onsubmit="return confirm('Are you sure you want to delete this user?');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-md">
-                                <i class="bi bi-trash"></i> Delete
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</body>
-</html>

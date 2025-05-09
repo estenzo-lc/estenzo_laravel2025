@@ -1,0 +1,26 @@
+body {
+    background-color: #f7d2ff; /* soft pastel background */
+}
+
+.navbar {
+    background-color: #c8b3ff; /* rich pastel violet */
+}
+
+.navbar-brand,
+.nav-link {
+    color: white !important;
+}
+
+.logout-btn {
+    background-color: #bec1ff; /* slightly muted violet */
+    border-color: #bec1ff;
+}
+
+.logout-btn:hover {
+    background-color: #c3f9ff; /* soft cyan hover */
+    border-color: #c3f9ff;
+}
+
+.container {
+    margin-top: 20px;
+}

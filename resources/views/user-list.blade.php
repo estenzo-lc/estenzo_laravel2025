@@ -5,143 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User List</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-    body {
-        background-color: #fffcbf; /* Pale yellow from palette */
-        font-family: Arial, sans-serif;
-    }
-
-    h2 {
-        color: #ffb98a;
-        font-size: 2rem;
-        text-align: center;
-    }
-
-    .card {
-        border: 1px solid #ffd2d2;
-        border-radius: 8px;
-        background-color: #ffffff;
-    }
-
-    .card-body {
-        padding: 2rem;
-    }
-
-    .form-label {
-        color: #ffdac7;
-    }
-
-    .form-control {
-        border: 1px solid #ffd2d2;
-        background-color: #fff5f5;
-        border-radius: 5px;
-    }
-
-    .form-control:focus {
-        border-color: #ffb98a;
-        outline: none;
-        box-shadow: 0 0 5px #ffb98a;
-    }
-
-    .btn-primary {
-        background-color: #ffd2d2;
-        border-color: #ffd2d2;
-        color: #333;
-    }
-
-    .btn-primary:hover {
-        background-color: #ffb98a;
-        border-color: #ffb98a;
-    }
-
-    .btn-outline-secondary {
-        border-color: #ffdac7;
-        color: #ffb98a;
-    }
-
-    .btn-outline-secondary:hover {
-        background-color: #ffdac7;
-        color: #333;
-    }
-
-    .btn-danger {
-        background-color: #ffb98a;
-        border-color: #ffb98a;
-        color: white;
-    }
-
-    .btn-danger:hover {
-        background-color: #ffecb0;
-        border-color: #ffecb0;
-        color: #333;
-    }
-
-    .btn-success {
-        background: #ffecb0;
-        border-color: #ffecb0;
-        color: #333;
-    }
-
-    .btn-success:hover {
-        background: #fffcbf;
-        border-color: #fffcbf;
-    }
-
-    .table-primary {
-        background-color: #ffd2d2;
-        color: #333;
-    }
-
-    .table th,
-    .table td {
-        text-align: center;
-    }
-
-    .table-striped tbody tr:nth-of-type(odd) {
-        background-color: #fff7e6; /* subtle peach striping */
-    }
-
-    .alert-success {
-        background-color: #ffecb0;
-        color: #333;
-    }
-
-    .alert-danger {
-        background-color: #ffd2d2;
-        color: #333;
-    }
-
-    .nav-bar {
-        background: #ffdac7;
-        padding: 10px;
-        text-align: center;
-    }
-
-    .nav-bar a {
-        color: white;
-        margin: 0 15px;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    .profile-container {
-        background: white;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        margin: 40px auto;
-        width: 50%;
-    }
-
-    .profile-title {
-        color: #ffb98a;
-        font-size: 2rem;
-        text-align: center;
-    }
-</style>
-
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 </head>
 
 <body>
@@ -186,7 +50,7 @@
 
         <div class="table-responsive shadow-sm rounded bg-white p-3">
             <table class="table table-hover align-middle mb-0 bg-white">
-                <thead class="table-primary">
+                <thead class="table-primary text-center">
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
@@ -217,6 +81,7 @@
                 </tbody>
             </table>
         </div>
+
 
         <div class="d-flex justify-content-center mt-4">
             {{ $users->onEachSide(1)->links('pagination::bootstrap-5') }}

@@ -1,76 +1,16 @@
-<!-- ... same <head> section ... -->
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-
-    <style>
-    body {
-        font-family: Arial, sans-serif;
-        background: #ffa6c9; /* light pink background from palette */
-    }
-
-    .nav-bar {
-        background: #fca17d; /* orange from palette */
-        padding: 10px;
-        text-align: center;
-    }
-
-    .nav-bar a {
-        color: white;
-        margin: 0 15px;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    .profile-container {
-        background: white;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        margin: 40px auto;
-        width: 50%;
-    }
-
-    .profile-title {
-        color: #f88379; /* salmon pink from palette */
-        font-size: 2rem;
-        text-align: center;
-    }
-
-    .btn-primary {
-        background: #ff6f61; /* coral red */
-        border-color: #ff6f61;
-        color: white;
-    }
-
-    .btn-primary:hover {
-        background: #e65a5a; /* deep red hover */
-        border-color: #e65a5a;
-    }
-
-    .btn-success {
-        background: #fca17d; /* soft orange */
-        border-color: #fca17d;
-        color: white;
-    }
-
-    .btn-success:hover {
-        background: #f88379; /* hover salmon */
-        border-color: #f88379;
-    }
-</style>
-
-
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/toast.css') }}">
 </head>
+
 <body>
 
-@include('nav')
+    @include('nav')
 
     @if (session('success') || $errors->any())
         <div class="position-fixed top-0 end-0 p-3" style="z-index: 9999">
@@ -95,45 +35,49 @@
         </div>
     @endif
 
-    <div class="profile-container">
-        <h2 class="profile-title">Edit Profile</h2>
-        <form action="{{ route('profile.update') }}" method="POST">
-            @csrf
-            <div class="form-group">
-                <label for="first_name">First Name</label>
-                <input type="text"
-                       class="form-control @error('first_name') is-invalid @enderror"
-                       id="first_name" name="first_name"
-                       value="{{ old('first_name', $user->first_name ?? '') }}">
-                @error('first_name')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header text-center fw-bold">Edit Profile</div>
+                    <div class="card-body p-3">
+                        <form action="{{ route('profile.update') }}" method="POST">
+                            @csrf
+                            <div class="mb-2">
+                                <label for="first_name" class="form-label">First Name</label>
+                                <input type="text" class="form-control @error('first_name') is-invalid @enderror"
+                                    id="first_name" name="first_name"
+                                    value="{{ old('first_name', session('user')->first_name) }}">
+                                @error('first_name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-2">
+                                <label for="last_name" class="form-label">Last Name</label>
+                                <input type="text" class="form-control @error('last_name') is-invalid @enderror"
+                                    id="last_name" name="last_name"
+                                    value="{{ old('last_name', session('user')->last_name) }}">
+                                @error('last_name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-2">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control @error('username') is-invalid @enderror"
+                                    id="username" name="username"
+                                    value="{{ old('username', session('user')->username) }}">
+                                @error('username')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-md">Update Profile</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-
-            <div class="form-group">
-                <label for="last_name">Last Name</label>
-                <input type="text"
-                       class="form-control @error('last_name') is-invalid @enderror"
-                       id="last_name" name="last_name"
-                       value="{{ old('last_name', $user->last_name ?? '') }}">
-                @error('last_name')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text"
-                       class="form-control @error('username') is-invalid @enderror"
-                       id="username" name="username"
-                       value="{{ old('username', $user->username ?? '') }}">
-                @error('username')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
-        </form>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -146,8 +90,7 @@
             }
         });
     </script>
+
 </body>
+
 </html>
-
-
-

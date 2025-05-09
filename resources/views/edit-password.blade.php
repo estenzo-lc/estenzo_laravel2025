@@ -1,72 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Password</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Change Password</title>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/toast.css') }}">
+
     <style>
-    body {
-        font-family: Arial, sans-serif;
-        background: #ffa6c9; /* light pink */
-    }
 
-    .nav-bar {
-        background: #fca17d; /* pastel orange from palette */
-        padding: 10px;
-        text-align: center;
-    }
-
-    .nav-bar a {
-        color: white;
-        margin: 0 15px;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    .profile-container {
-        background: white;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        margin: 40px auto;
-        width: 50%;
-    }
-
-    .profile-title {
-        color: #f88379; /* reddish-pink accent */
-        font-size: 2rem;
-        text-align: center;
-    }
-
-    .btn-primary {
-        background: #ff6f61; /* vibrant coral red */
-        border-color: #ff6f61;
-        color: white;
-    }
-
-    .btn-primary:hover {
-        background: #e65a5a; /* deep red hover */
-        border-color: #e65a5a;
-    }
-
-    .btn-success {
-        background: #fca17d; /* soft orange */
-        border-color: #fca17d;
-        color: white;
-    }
-
-    .btn-success:hover {
-        background: #f88379; /* salmon pink hover */
-        border-color: #f88379;
-    }
-</style>
-
-
+    </style>
 </head>
-<body>
-@include('nav')
 
+<body>
+
+    @include('nav')
 
     @if (session('success') || $errors->any())
         <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999">
@@ -92,36 +41,46 @@
         </div>
     @endif
 
-    <div class="profile-container">
-        <h2 class="profile-title">Edit Password</h2>
-        <form method="POST" action="{{ route('password.update') }}">
-            @csrf
-            <div class="form-group">
-                <label for="old_password">Old Password</label>
-                <input type="password" class="form-control @error('old_password') is-invalid @enderror"
-                    id="old_password" name="old_password" placeholder="Enter your old password" required>
-                @error('old_password')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header text-center fw-bold">Change Password</div>
+                    <div class="card-body p-4">
+                        <form action="{{ route('password.update') }}" method="POST">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="old_password" class="form-label">Old Password</label>
+                                <input type="password" id="old_password" name="old_password"
+                                    class="form-control form-control-md @error('old_password') is-invalid @enderror">
+                                @error('old_password')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="new_password" class="form-label">New Password</label>
+                                <input type="password" id="new_password" name="new_password"
+                                    class="form-control form-control-md @error('new_password') is-invalid @enderror">
+                                @error('new_password')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirm_password" class="form-label">Confirm New Password</label>
+                                <input type="password" id="confirm_password" name="confirm_password"
+                                    class="form-control form-control-md @error('confirm_password') is-invalid @enderror">
+                                @error('confirm_password')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-md">Update Password</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="new_password">New Password</label>
-                <input type="password" class="form-control @error('new_password') is-invalid @enderror"
-                    id="new_password" name="new_password" placeholder="Enter new password" required>
-                @error('new_password')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="form-group">
-                <label for="confirm_password">Confirm New Password</label>
-                <input type="password" class="form-control @error('confirm_password') is-invalid @enderror"
-                    id="confirm_password" name="confirm_password" placeholder="Confirm New Password" required>
-                @error('confirm_password')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
-            <button type="submit" class="btn btn-primary">Save Changes</button>
-        </form>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -134,5 +93,7 @@
             }
         });
     </script>
+
 </body>
+
 </html>

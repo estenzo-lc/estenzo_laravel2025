@@ -22,38 +22,32 @@ class RegisterUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name' => 'required|string|max:50|regex:/^[a-zA-Z\s\'\-]+$/',
-            'last_name' => 'required|string|max:50|regex:/^[a-zA-Z\s\'\-]+$/',
-            'birthday' => 'required|date',
+            'firstname' => 'required|string|max:50|regex:/^[a-zA-Z\s\'\-]+$/',
+            'lastname' => 'required|string|max:50|regex:/^[a-zA-Z\s\'\-]+$/',
+            'bod' => 'required|date',
             'sex' => 'required|in:Male,Female',
             'email' => 'required|email|unique:usersinfo,email',
             'username' => 'required|string|unique:usersinfo,username',
-            'password' => 'required|string|min:8|confirmed',  // Ensures password confirmation matches
+            'password' => 'required|string|min:8',
             'terms' => 'accepted',
         ];
     }
 
-    /**
-     * Get custom messages for validator errors.
-     */
     public function messages(): array
     {
         return [
-            'first_name.regex' => 'The first name may only contain letters, spaces, hyphens, and apostrophes.',
-            'last_name.regex' => 'The last name may only contain letters, spaces, hyphens, and apostrophes.',
-            'password.confirmed' => 'The password confirmation does not match.',
+            'firstname.regex' => 'The first name may only contain letters, spaces, hyphens, and apostrophes.',
+            'lastname.regex' => 'The last name may only contain letters, spaces, hyphens, and apostrophes.',
         ];
     }
 
-    /**
-     * Prepare the data for validation.
-     */
     protected function prepareForValidation()
     {
         $this->merge([
-            'first_name' => ucwords(strtolower(trim($this->first_name))),
-            'last_name' => ucwords(strtolower(trim($this->last_name))),
+            'firstname' => ucwords(strtolower(trim($this->firstname))),
+            'lastname' => ucwords(strtolower(trim($this->lastname))),
             'username' => trim($this->username),
         ]);
     }
+    
 }
