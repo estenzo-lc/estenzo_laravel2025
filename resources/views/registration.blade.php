@@ -1,81 +1,140 @@
-<style>
-    body {
-        background: linear-gradient(135deg, #f7d2ff, #c0d7ff); /* pastel pink to pastel blue */
-        min-height: 100vh;
-        margin: 0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+<!DOCTYPE html>
+<html lang="en">
 
-    .card {
-        background-color: #ffffff;
-        border-radius: 1rem;
-        padding: 2rem;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-        border: none;
-    }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/registration.css">
 
-    h2 {
-        color: #9d8dff; /* soft purple */
-    }
+    <style>
+        #password-strength {
+            font-size: 0.9rem;
+        }
 
-    .form-label {
-        font-weight: 600;
-        color: #6f42c1; /* muted purple */
-    }
+        .strength-weak {
+            color: #dc3545;
+        }
 
-    .form-control {
-        border-radius: 0.5rem;
-        border: 1px solid #ccc;
-    }
+        /* red */
+        .strength-medium {
+            color: #ffc107;
+        }
 
-    .btn-primary {
-        background-color: #c8b3ff; /* pastel purple */
-        border-color: #c8b3ff;
-        color: white;
-        transition: all 0.3s ease-in-out;
-    }
+        /* yellow */
+        .strength-strong {
+            color: #28a745;
+        }
 
-    .btn-primary:hover {
-        background-color: #b39ddb;
-        border-color: #b39ddb;
-        transform: scale(1.02);
-    }
+        /* green */
+    </style>
+</head>
 
-    .btn-secondary {
-        background-color: #c3f9ff; /* pastel cyan */
-        border-color: #c3f9ff;
-        color: black;
-    }
 
-    .btn-secondary:hover {
-        background-color: #a0efff;
-        border-color: #a0efff;
-    }
+<body>
+    <nav class="nav bar navbar-expanded-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">
 
-    #password-strength {
-        font-size: 0.9rem;
-    }
+            </a>
+        </div>
 
-    .strength-weak {
-        color: #f67280; /* soft red */
-    }
+    </nav>
 
-    .strength-medium {
-        color: #ffce54; /* pastel yellow */
-    }
 
-    .strength-strong {
-        color: #4caf50; /* green */
-    }
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card p-4 shadow-sm">
+                    <h2 class="mb-3">Register</h2>
+                    <form method="POST" action="{{ route('register.save') }}">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="firstname" class="form-label">First Name</label>
+                            <input type="text" class="form-control @error('firstname') is-invalid @enderror"
+                                id="firstname" name="firstname" value="{{ old('firstname') }}">
+                            @error('firstname')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="lastname" class="form-label">Last Name</label>
+                            <input type="text" class="form-control @error('lastname') is-invalid @enderror"
+                                id="lastname" name="lastname" value="{{ old('lastname') }}">
+                            @error('lastname')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="bod" class="form-label">Date of Birth</label>
+                            <input type="date" class="form-control @error('bod') is-invalid @enderror" id="bod"
+                                name="bod" value="{{ old('bod') }}">
+                            @error('bod')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
 
-    .form-check-label {
-        color: #6c757d;
-    }
+                        </div>
+                        <div class="mb-3">
+                            <label for="sex" class="form-label">Sex</label>
+                            <select class="form-control @error('sex') is-invalid @enderror" id="sex" name="sex">
+                                <option value="" disabled {{ old('sex') ? '' : 'selected' }}>Select</option>
+                                <option value="Male" {{ old('sex') == 'Male' ? 'selected' : '' }}>Male</option>
+                                <option value="Female" {{ old('sex') == 'Female' ? 'selected' : '' }}>Female</option>
+                            </select>
+                            @error('sex')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
+                                name="email" value="{{ old('email') }}">
+                            @error('email')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control @error('username') is-invalid @enderror"
+                                id="username" name="username" value="{{ old('username') }}">
+                            @error('username')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
 
-    .invalid-feedback {
-        color: #f67280;
-    }
-</style>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                id="password" name="password">
+                            <div id="password-strength" class="mt-1 fw-semibold"></div>
+                            @error('password')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input @error('terms') is-invalid @enderror"
+                                id="terms" name="terms" {{ old('terms') ? 'checked' : '' }}>
+                            @error('terms')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+
+                            <label class="form-check-label" for="terms">I agree with the Privacy Policy and Terms and
+                                Conditions</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                        <br><br>
+                        <a href="{{ route('login') }}" class="btn btn-secondary w-100">Go Back</a>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <script src="{{ asset('js/password-strength.js') }}"></script>
+
+</body>
+
+</html>

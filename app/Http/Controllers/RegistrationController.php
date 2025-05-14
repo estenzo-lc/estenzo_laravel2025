@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RegisterUserRequest;
+
 use App\Models\Usersinfo;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Notifications\VerifyEmail;
+
+use App\Http\Requests\RegisterUserRequest;
 class RegistrationController extends Controller
 {
     //

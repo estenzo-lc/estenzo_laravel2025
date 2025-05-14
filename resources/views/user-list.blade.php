@@ -41,6 +41,11 @@
                             @if(request('name') || request('email'))
                                 <a href="{{ route('user.list') }}" class="btn btn-outline-secondary">Clear Filters</a>
                             @endif
+                                                        <div class="col-md-4">
+                                <a href="{{ route('user.export', request()->query()) }}"
+                                    class="btn btn-success">Download
+                                    CSV</a>
+                            </div>
                         </div>
                     </div>
                 </form>

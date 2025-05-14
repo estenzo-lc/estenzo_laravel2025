@@ -5,6 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Usersinfo;
 
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
+
+use App\Models\Upload;
+use Carbon\Carbon;
+
+
 class UserController extends Controller
 {
     //
@@ -57,5 +64,17 @@ public function destroy($id)
 
     return back()->withErrors(['delete' => 'User not found.']);
 }
+
+
+    public function export(Request $request)
+    {
+        $currentUser = session('user');
+
+        if (!$currentUser || $currentUser->user_type !== 'Admin') {
+            abort(403, 'Access denied');
+        }
+
+        return Excel::download(new UsersExport($request), 'users.csv');
+    }
 
 }
