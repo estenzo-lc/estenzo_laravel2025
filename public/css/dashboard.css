@@ -1,9 +1,9 @@
 body {
-    background-color: #f7d2ff; /* Soft pink background */
+    background-color: #a2e0ff; /* Light blue */
 }
 
 .navbar {
-    background-color: #c8b3ff; /* Pastel purple */
+    background-color: #ea88f2; /* Lavender pink */
 }
 
 .navbar-brand,
@@ -12,18 +12,19 @@ body {
 }
 
 .nav-link:hover {
-    color: #c3f9ff !important; /* Soft cyan for hover effect */
+    color: #ffb3cf !important; /* Soft pink hover */
 }
 
 .logout-btn {
-    background-color: #bec1ff; /* Light purple button */
-    border-color: #bec1ff;
+    background-color: #ff8888; /* Coral pink */
+    border-color: #ff8888;
     color: white !important;
+    margin-left: 10px; /* Alignment for small screens */
 }
 
 .logout-btn:hover {
-    background-color: #c0d7ff; /* Blue pastel for hover */
-    border-color: #c0d7ff;
+    background-color: #de0100; /* Bold red */
+    border-color: #de0100;
     color: white !important;
 }
 
@@ -31,12 +32,6 @@ body {
     margin-top: 20px;
 }
 
-/* Ensure Logout button stays aligned nicely on small screens */
-.logout-btn {
-    margin-left: 10px;
-}
-
-/* Keep burger icon white */
 .navbar-toggler {
     border-color: rgba(255, 255, 255, 0.5);
 }

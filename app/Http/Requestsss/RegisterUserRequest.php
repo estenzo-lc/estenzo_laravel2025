@@ -2,13 +2,14 @@
 
 namespace App\Http\Requests;
 
-
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
+     * 
+     * Returning true means anyone can send this request.
      */
     public function authorize(): bool
     {
@@ -16,9 +17,15 @@ class RegisterUserRequest extends FormRequest
     }
 
     /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * Validation rules for the registration form inputs.
+     * 
+     * - firstname and lastname: required, max 50 characters, only letters, spaces, hyphens, apostrophes.
+     * - bod (birthdate): required, must be a valid date.
+     * - sex: required, must be either 'Male' or 'Female'.
+     * - email: required, must be valid email, must be unique in usersinfo table.
+     * - username: required, must be unique in usersinfo table.
+     * - password: required, minimum length 8 characters.
+     * - terms: must be accepted (checked).
      */
     public function rules(): array
     {
@@ -34,6 +41,9 @@ class RegisterUserRequest extends FormRequest
         ];
     }
 
+    /**
+     * Custom error messages for specific validation failures.
+     */
     public function messages(): array
     {
         return [
@@ -42,6 +52,10 @@ class RegisterUserRequest extends FormRequest
         ];
     }
 
+    /**
+     * Prepare input data before validation.
+     * This normalizes name casing and trims whitespace for firstname, lastname, and username.
+     */
     protected function prepareForValidation()
     {
         $this->merge([
@@ -50,5 +64,4 @@ class RegisterUserRequest extends FormRequest
             'username' => trim($this->username),
         ]);
     }
-    
 }

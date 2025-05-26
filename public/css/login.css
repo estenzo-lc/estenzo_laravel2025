@@ -1,7 +1,7 @@
 body {
     height: 100vh;
     margin: 0;
-    background: linear-gradient(135deg, #c0d7ff, #c3f9ff); /* pastel gradient */
+    background: linear-gradient(135deg, #a2e0ff, #ffb3cf); /* Light blue to soft pink */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,31 +12,33 @@ body {
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    background-color: white;
+    background-color: #ffffff;
     width: 100%;
     max-width: 400px;
 }
 
 .form-label {
     font-weight: 600;
+    color: #de0100; /* Bold red for high contrast labels */
 }
 
 .btn-primary {
-    background-color: #bec1ff; /* pastel button */
-    border-color: #bec1ff;
-    color: #333;
+    background-color: #ff8888; /* Coral pink button */
+    border-color: #ff8888;
+    color: white;
 }
 
 .btn-primary:hover {
-    background-color: #c8b3ff;
-    border-color: #c8b3ff;
-    color: #222;
+    background-color: #de0100; /* Bold red on hover */
+    border-color: #de0100;
+    color: white;
 }
 
 a {
-    color: #a088ff; /* soft link color */
+    color: #ea88f2; /* Lavender link */
 }
 
 a:hover {
     text-decoration: underline;
+    color: #de0100; /* Red on hover for visibility */
 }

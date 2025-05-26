@@ -10,6 +10,7 @@
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     transition: all 0.3s ease-in-out;
+    color: white;
 }
 
 .toast .toast-body {
@@ -17,22 +18,21 @@
     padding: 0;
 }
 
-/* Updated with your pastel palette */
+/* Toast backgrounds using your palette */
 .toast.bg-success {
-    background: linear-gradient(135deg, #f7d2ff, #c0d7ff);
+    background: linear-gradient(135deg, #a2e0ff, #ffb3cf); /* blue to pink */
 }
 
 .toast.bg-danger {
-    background: linear-gradient(135deg, #bec1ff, #c8b3ff);
+    background: linear-gradient(135deg, #ff8888, #de0100); /* soft to bold red */
 }
 
-/* Optional: Info and Warning if needed */
 .toast.bg-info {
-    background: linear-gradient(135deg, #c3f9ff, #c0d7ff);
+    background: linear-gradient(135deg, #a2e0ff, #ea88f2); /* light blue to lavender */
 }
 
 .toast.bg-warning {
-    background: linear-gradient(135deg, #c8b3ff, #f7d2ff);
+    background: linear-gradient(135deg, #ffb3cf, #ea88f2); /* pink to lavender */
 }
 
 .btn-close {

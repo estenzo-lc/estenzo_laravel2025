@@ -1,9 +1,9 @@
 body {
-    background-color: #f7d2ff; /* soft pastel background */
+    background-color: #ffb3cf; /* soft pink background */
 }
 
 .navbar {
-    background-color: #c8b3ff; /* rich pastel violet */
+    background-color: #ea88f2; /* lavender pink */
 }
 
 .navbar-brand,
@@ -12,13 +12,15 @@ body {
 }
 
 .logout-btn {
-    background-color: #bec1ff; /* slightly muted violet */
-    border-color: #bec1ff;
+    background-color: #ff8888; /* coral pink */
+    border-color: #ff8888;
+    color: white !important;
 }
 
 .logout-btn:hover {
-    background-color: #c3f9ff; /* soft cyan hover */
-    border-color: #c3f9ff;
+    background-color: #de0100; /* bold red on hover */
+    border-color: #de0100;
+    color: white !important;
 }
 
 .container {

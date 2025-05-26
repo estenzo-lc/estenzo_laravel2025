@@ -1,10 +1,10 @@
 <style>
     body {
-        background-color: #f7d2ff; /* pastel pink */
+        background-color: #ea88f2; 
     }
 
     .navbar {
-        background-color: #c8b3ff; /* pastel purple */
+        background-color: #ffb3cf; 
     }
 
     .navbar-brand,
@@ -38,7 +38,7 @@
     }
 
     .logout-btn {
-        background-color: #bec1ff; /* pastel violet */
+        background-color: #ff8888; /* pastel violet */
         border-color: #bec1ff;
         color: white !important;
         margin-left: 10px;
